@@ -2,6 +2,7 @@ package auth
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -78,6 +79,20 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// log user in
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	w.WriteHeader(http.StatusCreated)
-	fmt.Fprintf(w, "Successfully logged in as %s.\n", u.Username)
+	response, err := getTestJson()
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Fprint(w, err)
+		return
+	}
+	fmt.Fprint(w, string(response))
+}
+
+func getTestJson() ([]byte, error) {
+	j := make(map[string]string)
+	j["token"] = "token123"
+	return json.MarshalIndent(j, "", "  ")
 }

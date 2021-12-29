@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'
+import './Register.css'
 
-async function loginUser(credentials) {
-    return fetch('http://localhost:8080/login', {
+async function registerUser(credentials) {
+    return fetch('http://localhost:8080/register', {
         method: 'Post',
         headers: {
             'Content-Type': 'application/json'
@@ -14,14 +14,14 @@ async function loginUser(credentials) {
         .then(data => data.json())
 }
 
-export default function Login({ setToken }) {
+export default function Register({ setToken }) {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const navigate = useNavigate();
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const token = await loginUser({
+        const token = await registerUser({
             username,
             password
         });
@@ -30,7 +30,7 @@ export default function Login({ setToken }) {
 
     return(
         <div className='login-wrapper'>
-            <h1>Please Log In</h1>
+            <h1>Please Register Below</h1>
             <form onSubmit={handleSubmit}>
                 <label>
                     <p>Username</p>
@@ -44,11 +44,11 @@ export default function Login({ setToken }) {
                     <button type='submit'>Submit</button>
                 </div>
             </form>
-            <button onClick={() => { navigate('/register'); }}>Register</button>
+            <button onClick={() => { navigate('/login'); }}>Login</button>
         </div>
     )
 }
 
-Login.propTypes = {
+Register.propTypes = {
     setToken: PropTypes.func.isRequired
 }
