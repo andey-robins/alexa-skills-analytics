@@ -16,3 +16,10 @@ services:
     environment:
       - DB_CONN=user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} host=db port=5432 dbname=${POSTGRES_DB}
     restart: always
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.prod
+    ports:
+      - "1337:80"
