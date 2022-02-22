@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS WebUsers (
 
 CREATE TABLE IF NOT EXISTS Users (
     uid uuid UNIQUE PRIMARY KEY NOT NULL,
-    alexa_id BYTEA UNIQUE NOT NULL,
-    alexa_device TEXT NOT NULL,
+    alexaId BYTEA UNIQUE NOT NULL,
+    alexaDevice TEXT NOT NULL,
     email TEXT,
-    time CURRENT_TIME
+    lastUpdated CURRENT_TIME
 );
 
