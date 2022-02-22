@@ -1,5 +1,14 @@
-CREATE TABLE IF NOT EXISTS Users (
+CREATE TABLE IF NOT EXISTS WebUsers (
     username TEXT UNIQUE PRIMARY KEY NOT NULL,
     salt BYTEA NOT NULL,
     hash BYTEA NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS Users (
+    uid uuid UNIQUE PRIMARY KEY NOT NULL,
+    alexa_id BYTEA UNIQUE NOT NULL,
+    alexa_device TEXT NOT NULL,
+    email TEXT,
+    time CURRENT_TIME
+);
+
