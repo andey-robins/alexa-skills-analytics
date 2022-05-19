@@ -7,13 +7,10 @@
 			"path": "web"
 		},
 		{
-			"path": "db"
+			"path": "admin"
 		},
 		{
 			"path": "."
-		},
-		{
-			"path": "admin"
 		}
 	],
 	"settings": {}

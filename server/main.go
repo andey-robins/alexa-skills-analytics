@@ -19,5 +19,5 @@ func main() {
 	router.GET("/answers", api.GetAnswers)
 	router.POST("/newAnswer", api.PostAnswer)
 
-	router.Run("localhost:8080")
+	router.Run("localhost:80")
 }

@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 const client = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: 'http://api.uwalexaskills.org/',
 })
 
 const dataProvider = {

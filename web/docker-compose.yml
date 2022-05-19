@@ -1,0 +1,17 @@
+version: '3'
+services:
+        portfolio:
+                build: .
+                labels:
+                        - "traefik.enable=true"
+                        - "traefik.http.routers.portfolio.rule=Host(`uwalexaskills.org`)"
+                        - "traefik.http.services.portfolio.loadbalancer.server.port=80"
+                        - "traefik.docker.network=traefik_default"
+                        - "traefik.http.routers.portfolio.tls=true"
+                        - "traefik.http.routers.portfolio.tls.certresolver=le"
+                networks:
+                        - traefik_default
+
+networks:
+        traefik_default:
+                external: true

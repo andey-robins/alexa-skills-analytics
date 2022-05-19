@@ -10,6 +10,6 @@ FROM alpine
 
 COPY --from=builder /build/server /server
 
-EXPOSE 8080
+EXPOSE 80
 
 ENTRYPOINT [ "/server" ]
